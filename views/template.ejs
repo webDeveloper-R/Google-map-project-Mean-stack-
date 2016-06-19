@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document>
+        <Style id="whiteLine">
+            <LineStyle>
+                <color>ffffffff</color>
+                <width>1</width>
+            </LineStyle>
+        </Style>
+        <Placemark id="<%= id %>">
+            <styleUrl>#whiteLine</styleUrl>
+            <MultiGeometry>
+                <LineString>
+                    <altitudeMode>absolute</altitudeMode>
+                    <coordinates>
+                        <%= lineStart %>
+                        <%= lineEnd %>
+                    </coordinates>
+                </LineString>
+                <Polygon id="<%= id %>_poly">
+                    <altitudeMode>absolute</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing>
+                            <coordinates>
+                                <%= quadP1 %>,<%= polyAltitude %>
+                                <%= quadP2 %>,<%= polyAltitude %>
+                                <%= quadP3 %>,<%= polyAltitude %>
+                                <%= quadP4 %>,<%= polyAltitude %>
+                                <%= quadP1 %>,<%= polyAltitude %>
+                            </coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </MultiGeometry>
+        </Placemark>
+        <GroundOverlay>
+            <Icon>
+                <href><%= image %></href>
+                <viewBoundScale>0.75</viewBoundScale>
+            </Icon>
+            <altitudeMode>absolute</altitudeMode>
+            <altitude><%= quadAltitude %></altitude>
+            <gx:LatLonQuad>
+                <coordinates>
+                    <%= quadP1 %>
+                    <%= quadP2 %>
+                    <%= quadP3 %>
+                    <%= quadP4 %>
+                </coordinates>
+            </gx:LatLonQuad>
+        </GroundOverlay>
+    </Document>
+</kml>
